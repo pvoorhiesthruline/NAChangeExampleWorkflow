@@ -6,19 +6,19 @@
 <title>ADKAR × COM-B Overlay</title>
 <meta name="description" content="ADKAR overlaid with the COM-B behaviour change wheel, plus a deliverable map of change management templates by phase.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
 .acw-root {
-  --paper: #FAF8F3;
-  --ink: #23231F;
-  --ink-soft: #5A5A52;
-  --rule: #DEDACD;
-  --cap: #3D5A54;
-  --cap-bg: #E4EBE8;
-  --opp: #45577A;
-  --opp-bg: #E5E9F0;
-  --mot: #A8722F;
-  --mot-bg: #F2E7D6;
+  --paper: #F3F1EA;
+  --ink: #0B1220;
+  --ink-soft: rgba(11,18,32,0.62);
+  --rule: rgba(11,18,32,0.12);
+  --cap: #0E6B5E;
+  --cap-bg: rgba(14,107,94,0.12);
+  --opp: #2D5BE3;
+  --opp-bg: rgba(45,91,227,0.10);
+  --mot: #6B4FD8;
+  --mot-bg: rgba(107,79,216,0.10);
   --card: #FFFFFF;
   font-family: 'Inter', sans-serif;
   background: var(--paper);
@@ -28,22 +28,23 @@
 }
 .acw-root * { box-sizing: border-box; }
 .acw-eyebrow {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--cap);
+  font-weight: 500;
   margin-bottom: 10px;
 }
 .acw-title {
-  font-family: 'Fraunces', serif;
-  font-weight: 500;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 600;
   font-size: clamp(32px, 4.2vw, 52px);
   line-height: 1.05;
   margin: 0 0 18px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.028em;
 }
-.acw-title em { font-style: italic; color: var(--ink-soft); font-weight: 400; }
+.acw-title em { font-style: normal; color: var(--ink-soft); font-weight: 300; }
 .acw-intro {
   max-width: 720px;
   font-size: 16.5px;
@@ -57,17 +58,19 @@
   margin: 44px 0 36px;
 }
 .acw-section-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 12px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--cap);
+  font-weight: 500;
   margin-bottom: 6px;
 }
 .acw-section-title {
-  font-family: 'Fraunces', serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin: 0 0 22px;
 }
 
@@ -111,13 +114,13 @@
 }
 .acw-matrix th:last-child, .acw-matrix td:last-child { border-right: none; }
 .acw-matrix thead th {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-weight: 500;
   color: var(--ink-soft);
-  background: #F4F1E9;
+  background: rgba(11,18,32,0.045);
 }
 .acw-matrix thead tr.groups th {
   font-size: 10.5px;
@@ -132,14 +135,15 @@
 .acw-matrix .grp-opp { color: var(--opp); }
 .acw-matrix .grp-mot { color: var(--mot); }
 .acw-matrix tbody th {
-  font-family: 'Fraunces', serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 17px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   white-space: nowrap;
-  background: #F4F1E9;
+  background: rgba(11,18,32,0.045);
 }
 .acw-matrix tbody th .letter {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   color: var(--ink-soft);
   display: block;
@@ -161,7 +165,7 @@
   color: var(--ink);
   max-width: 760px;
 }
-.acw-callout strong { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
+.acw-callout strong { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 16px; }
 
 /* Deliverables */
 .acw-phase { margin-bottom: 36px; }
@@ -172,9 +176,10 @@
   margin-bottom: 14px;
 }
 .acw-phase-name {
-  font-family: 'Fraunces', serif;
+  font-family: 'Inter Tight', sans-serif;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: -0.015em;
 }
 .acw-phase-rule { flex: 1; border-top: 1px solid var(--rule); }
 .acw-deliv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
@@ -186,7 +191,7 @@
 .acw-card-name { font-weight: 600; font-size: 14.5px; margin-bottom: 10px; }
 .acw-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
 .acw-tag {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10.5px;
   letter-spacing: 0.02em;
   padding: 3px 8px;
@@ -201,7 +206,7 @@
 .acw-card-note { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; }
 .acw-links { display: flex; flex-direction: column; gap: 5px; padding-top: 10px; border-top: 1px dashed var(--rule); }
 .acw-links-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -221,7 +226,7 @@
   margin-top: 50px;
   font-size: 12.5px;
   color: var(--ink-soft);
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
   border-top: 1px solid var(--rule);
   padding-top: 16px;
 }
@@ -524,6 +529,7 @@ body { margin: 0; }
   </div>
 
   <div class="acw-footer">
+    <p style="font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 18px; color: var(--ink);">Thruline<span style="font-weight: 300; color: var(--ink-soft); margin-left: 0.3em;">Design</span></p>
     <p style="margin: 0 0 10px;">Hiatt, J. M. (2006). <em>ADKAR: A model for change in business, government, and our community.</em> Prosci Learning Center Publications.</p>
     <p style="margin: 0 0 16px;">Michie, S., Van Stralen, M. M., &amp; West, R. (2011). The behaviour change wheel: a new method for characterising and designing behaviour change interventions. <em>Implementation Science, 6</em>(1), 42.</p>
     <p style="margin: 0;">ADKAR&reg; is a registered trademark of Prosci, Inc. References to the ADKAR model are for descriptive purposes only. No ownership is claimed and no endorsement, sponsorship, or affiliation with Prosci, Inc. is implied.</p>
