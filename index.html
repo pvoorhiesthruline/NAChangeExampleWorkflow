@@ -20,6 +20,8 @@
   --opp-bg: rgba(45,91,227,0.10);
   --mot: #6B4FD8;
   --mot-bg: rgba(107,79,216,0.10);
+  --accent: #10B981;
+  --accent-bg: rgba(16,185,129,0.10);
   --card: #FFFFFF;
   font-family: 'Inter', sans-serif;
   background: var(--paper);
@@ -212,6 +214,25 @@
   border: 1px solid var(--rule);
   background: var(--card);
   padding: 16px 18px;
+}
+.acw-card-featured {
+  border-color: var(--accent);
+  border-left-width: 4px;
+  background: var(--accent-bg);
+  box-shadow: 0 2px 10px rgba(16,185,129,0.12);
+}
+.acw-card-flag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  padding: 3px 9px;
+  border-radius: 3px;
+  margin-bottom: 10px;
 }
 .acw-card-name { font-weight: 600; font-size: 14.5px; margin-bottom: 10px; }
 .acw-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
@@ -457,7 +478,8 @@ body { margin: 0; }
           <a class="acw-link" href="https://9b5b8612d29aa300d372f26e7aade3c6.cdn.bubble.io/f1705595702506x436207155598731460/lean%20change%20-%20onepage-change-plan-EN.pdf" target="_blank" rel="noopener">Lean Change — One-Page Change Plan (PDF)</a>
         </div>
       </div>
-      <div class="acw-card">
+      <div class="acw-card acw-card-featured">
+        <div class="acw-card-flag">Key Deliverable</div>
         <div class="acw-card-name">Change Impact Assessment — the WHAT</div>
         <div class="acw-tag-row">
           <span class="acw-tag adkar">Knowledge · Ability</span>
@@ -465,6 +487,10 @@ body { margin: 0; }
           <span class="acw-tag opp">Physical Opportunity · Social Opportunity</span>
         </div>
         <div class="acw-card-note">Names the current-to-future gap by role, so training and workflow design have a real target instead of a generic one.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="/Change_Impact_Assessment.xlsx" download>Thruline — Change Impact Assessment Template (XLSX)</a>
+        </div>
       </div>
       <div class="acw-card">
         <div class="acw-card-name">Stakeholder Assessment — the WHO</div>
