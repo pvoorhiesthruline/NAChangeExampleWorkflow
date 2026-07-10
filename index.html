@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ADKAR × COM-B Overlay</title>
 <meta name="description" content="ADKAR overlaid with the COM-B behaviour change wheel, plus a deliverable map of change management templates by phase.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IlRocnVsaW5lIERlc2lnbiBGYXZpY29uIj4KICA8dGl0bGU+VGhydWxpbmUgRGVzaWduIEZhdmljb248L3RpdGxlPgogIDxwYXRoIGQ9Ik0gMy4zIDggUSAxNS45IDUuMzIsIDI4LjUgOCIgc3Ryb2tlPSIjNkI0RkQ4IiBzdHJva2Utd2lkdGg9IjIuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBmaWxsPSJub25lIj48L3BhdGg+CiAgPHJlY3QgeD0iMjIuNTUiIHk9IjUuODQxNDYwMDY1NTA3Njg0IiB3aWR0aD0iMy4zIiBoZWlnaHQ9IjIzLjE1ODUzOTkzNDQ5MjMxOCIgcng9IjEuNjUiIGZpbGw9IiM2QjRGRDgiPjwvcmVjdD4KICA8Y2lyY2xlIGN4PSIzLjMiIGN5PSI4IiByPSIyLjgiIGZpbGw9IiNBNzhCRkEiPjwvY2lyY2xlPgo8L3N2Zz4=">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
 
@@ -27,14 +28,30 @@
   line-height: 1.5;
 }
 .acw-root * { box-sizing: border-box; }
+.acw-brand-lockup { margin-bottom: 24px; }
+.acw-brand-lockup svg { width: 200px; height: auto; display: block; }
 .acw-eyebrow {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--cap);
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
   font-weight: 500;
-  margin-bottom: 10px;
+  line-height: 1.5;
+  max-width: 640px;
+  margin-bottom: 12px;
+}
+.acw-draft-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--mot);
+  background: var(--mot-bg);
+  padding: 4px 10px;
+  border-radius: 3px;
+  margin-bottom: 20px;
 }
 .acw-title {
   font-family: 'Inter Tight', sans-serif;
@@ -250,7 +267,17 @@ body { margin: 0; }
 
 <div class="acw-root">
 
-  <div class="acw-eyebrow">Framework overlay</div>
+  <div class="acw-brand-lockup" aria-hidden="false">
+    <svg viewBox="0 0 580 90" role="img" aria-label="Thruline Design">
+      <title>Thruline Design</title>
+      <path d="M 8.1 11.4 Q 43.5 4.8, 78.9 11.4" stroke="#6B4FD8" stroke-width="6.9" stroke-linecap="round" fill="none"></path>
+      <rect x="64.05" y="6.24" width="8.1" height="50.25" rx="4.05" fill="#6B4FD8"></rect>
+      <circle cx="8.1" cy="11.4" r="6.9" fill="#A78BFA"></circle>
+      <text x="77.55" y="52.89" font-family="'Inter Tight', 'Helvetica Neue', Arial, sans-serif" font-size="60" font-weight="600" letter-spacing="-1.5" fill="#0B1220">hruline<tspan dx="18" font-weight="300" fill-opacity="0.7">Design</tspan></text>
+    </svg>
+  </div>
+  <div class="acw-eyebrow">Framework and Templates prepared for NetApp, Charlotte, and Ashley by Patrick Voorhies / Thruline Design</div>
+  <div class="acw-draft-badge">Draft — For Discussion Purposes</div>
   <h1 class="acw-title">ADKAR <em>through</em> COM-B</h1>
   <p class="acw-intro">
     ADKAR describes a sequence of individual states: <strong>Awareness, Desire, Knowledge, Ability, Reinforcement</strong>.
