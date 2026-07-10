@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADKAR × COM-B Overlay</title>
+<meta name="description" content="ADKAR overlaid with the COM-B behaviour change wheel, plus a deliverable map of change management templates by phase.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+.acw-root {
+  --paper: #FAF8F3;
+  --ink: #23231F;
+  --ink-soft: #5A5A52;
+  --rule: #DEDACD;
+  --cap: #3D5A54;
+  --cap-bg: #E4EBE8;
+  --opp: #45577A;
+  --opp-bg: #E5E9F0;
+  --mot: #A8722F;
+  --mot-bg: #F2E7D6;
+  --card: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 56px 8vw 80px;
+  line-height: 1.5;
+}
+.acw-root * { box-sizing: border-box; }
+.acw-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+.acw-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(32px, 4.2vw, 52px);
+  line-height: 1.05;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+.acw-title em { font-style: italic; color: var(--ink-soft); font-weight: 400; }
+.acw-intro {
+  max-width: 720px;
+  font-size: 16.5px;
+  color: var(--ink-soft);
+  margin-bottom: 12px;
+}
+.acw-intro strong { color: var(--ink); font-weight: 600; }
+.acw-divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 44px 0 36px;
+}
+.acw-section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+.acw-section-title {
+  font-family: 'Fraunces', serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin: 0 0 22px;
+}
+
+/* Driver explanation */
+.acw-explainer {
+  max-width: 760px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  font-size: 14.5px;
+  color: var(--ink);
+}
+.acw-explainer p { margin: 0 0 10px; }
+.acw-explainer p:last-child { margin-bottom: 0; }
+.acw-explainer .term { font-weight: 600; }
+
+/* Legend */
+.acw-legend {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.acw-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.acw-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+.acw-dot.full { background: var(--ink); }
+.acw-dot.half { background: var(--ink); opacity: 0.35; }
+
+/* Matrix */
+.acw-matrix-wrap { overflow-x: auto; border: 1px solid var(--rule); background: var(--card); }
+.acw-matrix { width: 100%; border-collapse: collapse; min-width: 760px; }
+.acw-matrix th, .acw-matrix td {
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  padding: 14px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.acw-matrix th:last-child, .acw-matrix td:last-child { border-right: none; }
+.acw-matrix thead th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: #F4F1E9;
+}
+.acw-matrix thead tr.groups th {
+  font-size: 10.5px;
+  padding-bottom: 4px;
+  padding-top: 12px;
+  border-bottom: none;
+}
+.acw-matrix thead tr.subs th {
+  padding-top: 4px;
+}
+.acw-matrix .grp-cap { color: var(--cap); }
+.acw-matrix .grp-opp { color: var(--opp); }
+.acw-matrix .grp-mot { color: var(--mot); }
+.acw-matrix tbody th {
+  font-family: 'Fraunces', serif;
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  background: #F4F1E9;
+}
+.acw-matrix tbody th .letter {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 2px;
+}
+.acw-cell-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 4px; display: block; }
+.acw-cell.on-cap { background: var(--cap-bg); }
+.acw-cell.on-opp { background: var(--opp-bg); }
+.acw-cell.on-mot { background: var(--mot-bg); }
+.acw-cell.half { opacity: 0.55; }
+
+/* Callout */
+.acw-callout {
+  margin: 30px 0 6px;
+  border-left: 3px solid var(--ink);
+  padding: 16px 22px;
+  background: var(--card);
+  font-size: 15px;
+  color: var(--ink);
+  max-width: 760px;
+}
+.acw-callout strong { font-family: 'Fraunces', serif; font-weight: 500; font-size: 16px; }
+
+/* Deliverables */
+.acw-phase { margin-bottom: 36px; }
+.acw-phase-head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.acw-phase-name {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 500;
+}
+.acw-phase-rule { flex: 1; border-top: 1px solid var(--rule); }
+.acw-deliv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.acw-card {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  padding: 16px 18px;
+}
+.acw-card-name { font-weight: 600; font-size: 14.5px; margin-bottom: 10px; }
+.acw-tag-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+.acw-tag {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.02em;
+  padding: 3px 8px;
+  border-radius: 3px;
+  color: #fff;
+  white-space: nowrap;
+}
+.acw-tag.adkar { background: var(--ink); }
+.acw-tag.cap { background: var(--cap); }
+.acw-tag.opp { background: var(--opp); }
+.acw-tag.mot { background: var(--mot); }
+.acw-card-note { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; }
+.acw-links { display: flex; flex-direction: column; gap: 5px; padding-top: 10px; border-top: 1px dashed var(--rule); }
+.acw-links-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 2px;
+}
+.acw-link {
+  font-size: 12.5px;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 2px;
+}
+.acw-link:hover { text-decoration-color: var(--ink); }
+
+.acw-footer {
+  margin-top: 50px;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-family: 'IBM Plex Mono', monospace;
+  border-top: 1px solid var(--rule);
+  padding-top: 16px;
+}
+
+@media (max-width: 640px) {
+  .acw-root { padding: 40px 20px 60px; }
+  .acw-deliv-grid { grid-template-columns: 1fr; }
+}
+body { margin: 0; }
+</style>
+</head>
+<body>
+
+<div class="acw-root">
+
+  <div class="acw-eyebrow">Framework overlay</div>
+  <h1 class="acw-title">ADKAR <em>through</em> COM-B</h1>
+  <p class="acw-intro">
+    ADKAR describes a sequence of individual states: <strong>Awareness, Desire, Knowledge, Ability, Reinforcement</strong>.
+    It's useful for sequencing a change plan, but on its own it doesn't say <em>why</em> a person is stuck at a given
+    stage. Michie's COM-B system supplies that diagnostic layer: every stage of ADKAR draws on some combination of
+    <strong>Capability</strong>, <strong>Opportunity</strong>, and <strong>Motivation</strong>, and naming which one is
+    missing changes what intervention actually fixes it.
+  </p>
+  <p class="acw-intro">
+    Below, the six COM-B sub-components are mapped against each ADKAR stage, then typical change deliverables are
+    placed against both, so the discovery, strategy, and implementation work has a clear line back to what it's
+    actually meant to move.
+  </p>
+
+  <hr class="acw-divider">
+
+  <div class="acw-section-label">01 — The overlay</div>
+  <div class="acw-section-title">Where each ADKAR stage sits in COM-B</div>
+
+  <div class="acw-explainer">
+    <p><span class="term">What "primary" and "secondary" mean here.</span> The COM-B paper describes capability,
+    opportunity, and motivation as an interacting system rather than a checklist to score separately. Michie, van
+    Stralen, and West (2011) draw arrows both into and out of each component: opportunity can act on motivation, capability
+    can act on motivation, and performing the behaviour itself can then reshape all three. They also note that the
+    barrier to one behaviour might be capability alone, to another it might be opportunity alone, and to a third it
+    might require changes across all three.</p>
+    <p>A <span class="term">primary driver</span> below is the component that stage's behaviour cannot occur without,
+    the condition the paper treats as necessary. A <span class="term">secondary driver</span> is a component that acts
+    on the primary one through those causal arrows, a contributing condition rather than the direct target.
+    Practically, this means fixing a secondary driver on its own rarely closes the gap, since the necessary condition
+    is still unmet.</p>
+  </div>
+
+  <div class="acw-legend">
+    <span><span class="acw-dot full"></span> primary driver</span>
+    <span><span class="acw-dot half"></span> secondary / contributing driver</span>
+    <span style="color:var(--cap)">■ Capability</span>
+    <span style="color:var(--opp)">■ Opportunity</span>
+    <span style="color:var(--mot)">■ Motivation</span>
+  </div>
+
+  <div class="acw-matrix-wrap">
+    <table class="acw-matrix">
+      <thead>
+        <tr class="groups">
+          <th></th>
+          <th colspan="2" class="grp-cap">Capability</th>
+          <th colspan="2" class="grp-opp">Opportunity</th>
+          <th colspan="2" class="grp-mot">Motivation</th>
+        </tr>
+        <tr class="subs">
+          <th>ADKAR stage</th>
+          <th class="grp-cap">Physical</th>
+          <th class="grp-cap">Psychological</th>
+          <th class="grp-opp">Physical</th>
+          <th class="grp-opp">Social</th>
+          <th class="grp-mot">Reflective</th>
+          <th class="grp-mot">Automatic</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><span class="letter">A</span>Awareness</th>
+          <td></td>
+          <td class="acw-cell on-cap half"><span class="acw-cell-note">grasping the case for change</span></td>
+          <td></td>
+          <td></td>
+          <td class="acw-cell on-mot"><span class="acw-cell-note">forming the evaluation that change is needed</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><span class="letter">D</span>Desire</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="acw-cell on-opp half"><span class="acw-cell-note">peer sentiment shapes willingness</span></td>
+          <td class="acw-cell on-mot"><span class="acw-cell-note">the conscious choice to support it</span></td>
+          <td class="acw-cell on-mot"><span class="acw-cell-note">the emotional pull — WIIFM, identity, fear</span></td>
+        </tr>
+        <tr>
+          <th><span class="letter">K</span>Knowledge</th>
+          <td></td>
+          <td class="acw-cell on-cap"><span class="acw-cell-note">knowing what to do and how</span></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><span class="letter">A</span>Ability</th>
+          <td class="acw-cell on-cap"><span class="acw-cell-note">physical skill under real conditions</span></td>
+          <td class="acw-cell on-cap half"><span class="acw-cell-note">applying knowledge under pressure</span></td>
+          <td class="acw-cell on-opp"><span class="acw-cell-note">time, tools, systems that allow it</span></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <th><span class="letter">R</span>Reinforcement</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="acw-cell on-opp"><span class="acw-cell-note">norms, recognition, peer reinforcement</span></td>
+          <td></td>
+          <td class="acw-cell on-mot"><span class="acw-cell-note">habit formation, repeated cueing</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="acw-callout">
+    <strong>The gap ADKAR hides:</strong> an "Ability" problem and an "Opportunity" problem look identical from the
+    outside — someone isn't doing the new behaviour yet — but they need opposite fixes. If the barrier is Opportunity
+    (no time, conflicting systems, an unchanged process), more training won't move it; you have to change the
+    environment. ADKAR's Ability stage bundles both together, which is where change plans built on ADKAR alone tend
+    to over-invest in training and under-invest in removing structural barriers.
+  </div>
+
+  <hr class="acw-divider">
+
+  <div class="acw-section-label">02 — Deliverable map</div>
+  <div class="acw-section-title">Typical Change Deliverables by Key Phase</div>
+
+  <div class="acw-phase">
+    <div class="acw-phase-head">
+      <span class="acw-phase-name">Inputs</span>
+      <span class="acw-phase-rule"></span>
+    </div>
+    <div class="acw-deliv-grid">
+      <div class="acw-card">
+        <div class="acw-card-name">Current State Experience Mapping</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Awareness · Desire</span>
+          <span class="acw-tag mot">Reflective Motivation · Automatic Motivation</span>
+        </div>
+        <div class="acw-card-note">Reads the current reflective and automatic motivation before anything is designed.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://www.atlassian.com/team-playbook/plays/customer-journey-mapping" target="_blank" rel="noopener">Atlassian — Customer Journey Mapping Play</a>
+        </div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Future State Enterprise Workflow</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Knowledge · Ability</span>
+          <span class="acw-tag cap">Psychological Capability</span>
+          <span class="acw-tag opp">Physical Opportunity</span>
+        </div>
+        <div class="acw-card-note">Defines what the future process requires people to know and what the environment has to support.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://miro.com/customer-journey-map/how-to-make-effective-service-blueprints/" target="_blank" rel="noopener">Miro — How to Make Effective Service Blueprints</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acw-phase">
+    <div class="acw-phase-head">
+      <span class="acw-phase-name">Change Discovery</span>
+      <span class="acw-phase-rule"></span>
+    </div>
+    <div class="acw-deliv-grid">
+      <div class="acw-card">
+        <div class="acw-card-name">Change Canvas</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Awareness · Desire</span>
+          <span class="acw-tag mot">Reflective Motivation</span>
+        </div>
+        <div class="acw-card-note">A one-page canvas for framing the shape of a change at a glance — vision, stakeholders, risks, and rough plan — before the deeper discovery work begins.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://9b5b8612d29aa300d372f26e7aade3c6.cdn.bubble.io/f1705595702506x436207155598731460/lean%20change%20-%20onepage-change-plan-EN.pdf" target="_blank" rel="noopener">Lean Change — One-Page Change Plan (PDF)</a>
+        </div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Change Impact Assessment — the WHAT</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Knowledge · Ability</span>
+          <span class="acw-tag cap">Psychological Capability</span>
+          <span class="acw-tag opp">Physical Opportunity · Social Opportunity</span>
+        </div>
+        <div class="acw-card-note">Names the current-to-future gap by role, so training and workflow design have a real target instead of a generic one.</div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Stakeholder Assessment — the WHO</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Awareness · Desire</span>
+          <span class="acw-tag mot">Reflective Motivation · Automatic Motivation</span>
+        </div>
+        <div class="acw-card-note">The heart/head/say-do and impact-perception grid is a direct read on reflective and automatic motivation, by stakeholder group.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://llo-8230-interestholders.vercel.app/" target="_blank" rel="noopener">Interest Holders Tool</a>
+          <a class="acw-link" href="https://llo-8230-persona-profile.vercel.app/" target="_blank" rel="noopener">Persona Profile Tool</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acw-phase">
+    <div class="acw-phase-head">
+      <span class="acw-phase-name">Change Strategy</span>
+      <span class="acw-phase-rule"></span>
+    </div>
+    <div class="acw-deliv-grid">
+      <div class="acw-card">
+        <div class="acw-card-name">Training Methods</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Knowledge · Ability</span>
+          <span class="acw-tag cap">Psychological Capability · Physical Capability</span>
+        </div>
+        <div class="acw-card-note">Method choice should follow which capability gap you're closing — comprehension versus applied skill.</div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Training Curriculum</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Knowledge · Ability</span>
+          <span class="acw-tag cap">Psychological Capability · Physical Capability</span>
+        </div>
+        <div class="acw-card-note">Builds the psychological and physical capability the Impact Assessment identified as missing.</div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Communications Plan</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Awareness · Desire</span>
+          <span class="acw-tag mot">Reflective Motivation · Automatic Motivation</span>
+        </div>
+        <div class="acw-card-note">Carries the case for change and the emotional case for supporting it.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://www.servicenow.com/content/dam/servicenow-assets/public/en-us/doc-type/success/quick-answer/organizational-change-management-communication-plan.pdf" target="_blank" rel="noopener">ServiceNow — OCM Communication Plan (PDF)</a>
+        </div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Communications Vehicles & Aims</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Awareness · Desire</span>
+          <span class="acw-tag mot">Reflective Motivation · Automatic Motivation</span>
+          <span class="acw-tag opp">Social Opportunity</span>
+        </div>
+        <div class="acw-card-note">Channel and messenger choice also shapes social opportunity — who hears it, and from whom, matters as much as the message.</div>
+        <div class="acw-links">
+          <span class="acw-links-label">Templates</span>
+          <a class="acw-link" href="https://testlify.com/assess-communication-channels-and-strategies-in-the-organization-effectively/" target="_blank" rel="noopener">Testlify — Assessing Communication Channels and Strategies</a>
+        </div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Engagement, Social Support, and Activations</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Desire · Reinforcement</span>
+          <span class="acw-tag mot">Automatic Motivation</span>
+          <span class="acw-tag opp">Social Opportunity</span>
+        </div>
+        <div class="acw-card-note">Sustains automatic motivation and social opportunity after go-live, when initial reflective buy-in fades.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acw-phase">
+    <div class="acw-phase-head">
+      <span class="acw-phase-name">Change Implementation</span>
+      <span class="acw-phase-rule"></span>
+    </div>
+    <div class="acw-deliv-grid">
+      <div class="acw-card">
+        <div class="acw-card-name">Change Plan</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">All five stages</span>
+          <span class="acw-tag cap">sequencing across all six components</span>
+        </div>
+        <div class="acw-card-note">The integration point: sequences every capability, opportunity, and motivation intervention against the ADKAR timeline.</div>
+      </div>
+      <div class="acw-card">
+        <div class="acw-card-name">Change BI — Metrics, Dashboard, Pulse Checks</div>
+        <div class="acw-tag-row">
+          <span class="acw-tag adkar">Reinforcement</span>
+          <span class="acw-tag mot">Automatic Motivation</span>
+          <span class="acw-tag opp">Social Opportunity</span>
+        </div>
+        <div class="acw-card-note">Measures whether reinforcement is actually taking hold, and feeds back into Awareness for the next cycle if it isn't.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acw-footer">
+    <p style="margin: 0 0 10px;">Hiatt, J. M. (2006). <em>ADKAR: A model for change in business, government, and our community.</em> Prosci Learning Center Publications.</p>
+    <p style="margin: 0 0 16px;">Michie, S., Van Stralen, M. M., &amp; West, R. (2011). The behaviour change wheel: a new method for characterising and designing behaviour change interventions. <em>Implementation Science, 6</em>(1), 42.</p>
+    <p style="margin: 0;">ADKAR&reg; is a registered trademark of Prosci, Inc. References to the ADKAR model are for descriptive purposes only. No ownership is claimed and no endorsement, sponsorship, or affiliation with Prosci, Inc. is implied.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
